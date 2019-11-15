@@ -1,0 +1,78 @@
+<hr>
+<div class="products-page">
+        <div class="container page">
+          <div class="row">
+      
+            <div class="col-md-6 col-xs-12">
+              <h3 class="text-xs-center">Add User</h3>
+      
+              <form ng-submit="$ctrl.submitForm()">
+                <fieldset ng-disabled="false">
+      
+                  <fieldset class="form-group">
+                    <input class="form-control"
+                      type="text"
+                      placeholder="Username *"
+                      ng-model="$ctrl.formData.username" />
+                  </fieldset>
+      
+                  <fieldset class="form-group">
+                    <input class="form-control"
+                      type="text"
+                      placeholder="Email *"
+                      ng-model="$ctrl.formData.email" />
+                  </fieldset>
+      
+                  <fieldset class="form-group">
+                    <input class="form-control"
+                      type="text"
+                      placeholder="Full Name *"
+                      ng-model="$ctrl.formData.full_name" />
+                  </fieldset>
+    
+                  <fieldset class="form-group">
+                    <input class="form-control"
+                      type="text"
+                      placeholder="Contact Number *"
+                      ng-model="$ctrl.formData.contact_number" />
+                  </fieldset>
+      
+                  <button class="btn btn-primary pull-xs-right"
+                    type="submit">
+                    Submit
+                  </button>
+      
+                </fieldset>
+              </form>
+            </div>
+    
+            <div class="col-md-6 col-xs-12">
+                <h3 class="text-xs-center">View Users</h3>
+              <div>
+                <table class="table table-boarded">
+                    <tr>
+                      <th>No</th>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Full Name</th>
+                      <th>Contact</th>
+                      <th>Options</th>
+                    </tr>
+                    <tr ng-repeat="user in $ctrl.users">
+                        <td>{{$index+1}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.full_name}}</td>
+                        <td>{{user.contact_number}}</td>
+                        <td>
+                          <button ng-click="$ctrl.deleteUser(user.id)" class="btn btn-sm btn-danger">X</button>
+                        </td>
+                    </tr>
+                </table>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      

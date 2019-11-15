@@ -1,0 +1,94 @@
+<hr>
+<div class="products-page">
+    <div class="container page">
+      <div class="row">
+       
+        <div class="col-md-6 col-xs-12">
+          <h3 class="text-xs-center">Add Product</h3>
+  
+          <form ng-submit="$ctrl.submitForm()">
+            <fieldset ng-disabled="false">
+  
+              <fieldset class="form-group">
+                <input class="form-control"
+                  type="text"
+                  placeholder="Name *"
+                  ng-model="$ctrl.formData.name" />
+              </fieldset>
+  
+              <fieldset class="form-group">
+                <input class="form-control"
+                  type="text"
+                  placeholder="Label *"
+                  ng-model="$ctrl.formData.label" />
+              </fieldset>
+  
+              <fieldset class="form-group">
+                <input class="form-control"
+                  type="text"
+                  placeholder="Unit Price *"
+                  ng-model="$ctrl.formData.unit_price" />
+              </fieldset>
+
+              <fieldset class="form-group">
+                <input class="form-control"
+                  type="text"
+                  placeholder="Available Qty *"
+                  ng-model="$ctrl.formData.available_qty" />
+              </fieldset>
+  
+              <fieldset class="form-group">
+                <input class="form-control"
+                  type="text"
+                  placeholder="Reorder Level *"
+                  ng-model="$ctrl.formData.reorder_level" />
+              </fieldset>
+  
+              <fieldset class="form-group">
+                <input class="form-control"
+                  type="text"
+                  placeholder="Note"
+                  ng-model="$ctrl.formData.note" />
+              </fieldset>
+  
+              <button class="btn btn-primary pull-xs-right"
+                type="submit">
+                Submit
+              </button>
+  
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="col-md-6 col-xs-12">
+            <h3 class="text-xs-center">View Products</h3>
+          <div>
+            <table class="table table-boarded">
+                <tr>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Unit Price</th>
+                  <th>Available Qty</th>
+                  <th>Reorder Lvl</th>
+                  <th>Note</th>
+                  <th>Options</th>
+                </tr>
+                <tr ng-repeat="product in $ctrl.products">
+                    <td>{{$index+1}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.unit_price}}</td>
+                    <td>{{product.available_qty}}</td>
+                    <td>{{product.reorder_level}}</td>
+                    <td>{{product.note}}</td>
+                    <td>
+                      <button ng-click="$ctrl.deleteProduct(product.id)" class="btn btn-sm btn-danger">X</button>
+                    </td>
+                </tr>
+            </table>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  

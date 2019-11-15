@@ -1,0 +1,138 @@
+<div class="home-page">
+
+  <!-- Splash banner that only shows when not logged in -->
+  <div class="banner" show-authed="false">
+    <div class="container">
+      <h3 class="logo-font" ng-bind="::$ctrl.appName"></h3>
+    </div>
+  </div>
+
+  <div class="orders-page">
+    <div class="container page">
+      <div class="row">
+
+        <div class="col-md-6 col-xs-12">
+          <!-- Errors reporting -->
+          <ul class="error-messages">
+            <li ng-repeat="error in $ctrl.errors track by $index">
+              {{error}}
+            </li>
+          </ul>
+          <h3>Add Order</h3>
+
+          <div>
+            <form>
+              <fieldset ng-disabled="false">
+
+                <fieldset class="form-group">
+                  <!-- <input class="form-control" type="text" placeholder="User *" ng-model="$ctrl.formData.user_id" /> -->
+                  <select class="form-control" ng-model="$ctrl.formData.user_id" name="user_id" id="user_id">
+                    <option value="">Select User</option>
+                    <option ng-repeat="user in $ctrl.users" value="{{user.id}}">{{user.full_name}}</option>
+                  </select>
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <!-- <input class="form-control" type="text" placeholder="Product *" ng-model="$ctrl.formData.product_id" /> -->
+                  <select ng-change="$ctrl.getProductID()" class="form-control" ng-model="$ctrl.formData.product_id" name="product_id" id="product_id">
+                    <option value="">Select Product</option>
+                    <option ng-repeat="product in $ctrl.products" value="{{product.id}}">{{product.name}}</option>
+                  </select>
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <input class="form-control" type="text" placeholder="Quantity *" ng-model="$ctrl.formData.order_qty" />
+                </fieldset>
+
+                <button ng-hide="$ctrl.updateStatus" ng-click="$ctrl.submitForm('save')" class="btn btn-primary pull-xs-right">
+                  Submit
+                </button>
+                <button ng-show="$ctrl.updateStatus" ng-click="$ctrl.submitForm('update')" class="btn btn-info pull-xs-right">
+                  Update
+                </button>
+                <button ng-show="$ctrl.updateStatus" ng-click="$ctrl.cancelUpdate()" class="btn btn-default pull-xs-right">
+                  Cancel
+                </button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div id="search">
+        <div class="row">
+          <h4>Search</h4>
+          <div class="col-md-2">
+            <fieldset class="form-group">
+              <select class="form-control" ng-model="$ctrl.formData.search_by_date" name="search_by_date" id="search_by_date">
+                <option value="">Select Method</option>
+                <option value="all">All time</option>
+                <option value="7days">Last 7 days</option>
+                <option value="today">Today</option>
+              </select>
+            </fieldset>
+          </div>
+          <div class="col-md-2">
+            <button ng-click="$ctrl.searchByDate()" class="btn btn-default">
+              Search
+            </button>
+          </div>
+          <div class="col-md-2">
+            <fieldset class="form-group">
+              <input class="form-control" type="text" placeholder="Enter search term" ng-model="$ctrl.formData.search_by_name" />
+            </fieldset>
+          </div>
+          <div class="col-md-2">
+            <button ng-click="$ctrl.searchByName()" class="btn btn-default">
+              Search
+            </button>
+          </div>
+          <div class="col-md-2">
+            <button ng-click="$ctrl.resetAll()" class="btn btn-warning">
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-10 col-xs-12">
+          <div>
+            <table class="table table-boarded">
+              <tr>
+                <th>No</th>
+                <th>User</th>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Discount</th>
+                <th>Net Total</th>
+                <th>Date</th>
+                <th>Options</th>
+              </tr>
+              <tr ng-repeat="order in $ctrl.orders">
+                <td>{{$index+1}}</td>
+                <td>{{order.full_name}}</td>
+                <td>{{order.name}}</td>
+                <td>{{order.unit_price}} EUR</td>
+                <td>{{order.order_qty}}</td>
+                <td>{{order.total_price}} EUR</td>
+                <td>{{order.discount}} %</td>
+                <td>{{order.net_total}} EUR</td>
+                <td>{{order.order_date}}</td>
+                <td>
+                  <button ng-click="$ctrl.deleteOrder(order.id)" class="btn btn-sm btn-danger">X</button>
+                  <button ng-click="$ctrl.editOrder(order)" class="btn btn-sm btn-warning">Edit</button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
