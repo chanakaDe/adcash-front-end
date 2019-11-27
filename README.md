@@ -25,8 +25,3 @@ Please check corresponding files in the front end here :
 
 **[auth.interceptor.js](https://github.com/chanakaDe/adcash-front-end/blob/master/src/js/config/auth.interceptor.js)**
 
-But in the demo, I'm not using JWT based (Auth0) authentication. 
-
-All the form and unit validations are done in the main `Orders` view. No validations are done in the `Product` and `User` views. 
-I got both Back end developer assignment and full stack developer assignment at once and I spent most of my time on the back end developer assignment. I completed this task ( full stack developer ) within 3 days of time. 
-
